@@ -19,6 +19,7 @@
                 if (value == firstName) return;
                 firstName = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(FullName));
             }
         }
 
@@ -30,7 +31,13 @@
                 if (value == lastName) return;
                 lastName = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(FullName));
             }
+        }
+
+        public string FullName
+        {
+            get { return string.Format("{0} {1}", firstName, lastName); }
         }
 
         public bool KnowsWPF
