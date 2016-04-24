@@ -7,6 +7,7 @@
     {
         private string firstName;
         private string lastName;
+        private bool knowsWPF;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -28,6 +29,17 @@
             {
                 if (value == lastName) return;
                 lastName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool KnowsWPF
+        {
+            get { return knowsWPF; }
+            set
+            {
+                if (value == knowsWPF) return;
+                knowsWPF = value;
                 OnPropertyChanged();
             }
         }
