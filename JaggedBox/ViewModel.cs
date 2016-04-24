@@ -7,6 +7,7 @@
     {
         private string firstName;
         private string lastName;
+        private bool knowsWPF;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,6 +19,7 @@
                 if (value == firstName) return;
                 firstName = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(FullName));
             }
         }
 
@@ -28,6 +30,23 @@
             {
                 if (value == lastName) return;
                 lastName = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(FullName));
+            }
+        }
+
+        public string FullName
+        {
+            get { return string.Format("{0} {1}", firstName, lastName); }
+        }
+
+        public bool KnowsWPF
+        {
+            get { return knowsWPF; }
+            set
+            {
+                if (value == knowsWPF) return;
+                knowsWPF = value;
                 OnPropertyChanged();
             }
         }
